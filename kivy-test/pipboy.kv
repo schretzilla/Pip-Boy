@@ -36,14 +36,43 @@ ScreenManagement:
             Label: 
             Label:
             Button:
+                color: 0,1,0,
+                background_normal: ''
+                background_color: 0,0,0,0
                 on_release: 
-                    root.manager.transition.direction = 'left'
-                    root.manager.current = 'settings'
-                text: 'Go to settings'
-            Label: 
-            
-
+                    root.manager.transition.direction = 'up'
+                    root.manager.current = 'camera'
+                text: 'V.A.T.S.'
+                halign: 'left'
+                valign: 'middle'
+            Label:             
         Label:
+
+<CameraMode>
+    BoxLayout:
+        orientation: 'vertical'
+
+        Camera:
+            id: camera
+            resolution: 399, 299
+            play: True
+
+        BoxLayout:
+            orientation: 'horizontal'
+            size_hint_y: None
+            height: '48dp'
+            Button:
+                text: 'V.A.T.S.'
+                on_release:
+                    root.FindFace()
+
+            Button:
+                text: 'Back'
+                on_release: 
+                    root.manager.transition.direction = 'down'
+                    root.manager.current = 'menu'
+
+
 <SettingsScreen>:
     BoxLayout:
         Button:

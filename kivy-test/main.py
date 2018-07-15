@@ -1,6 +1,8 @@
 from kivy.app import App
 from kivy.uix.widget import Widget
 
+from kivy.uix.camera import Camera
+
 from kivy.lang import Builder
 from kivy.uix.screenmanager import ScreenManager, Screen, FadeTransition
 
@@ -20,14 +22,19 @@ class ScreenManagement(ScreenManager):
 class SettingsScreen(Screen):
 	pass
 
-#Create the screen manager
+class CameraMode(Screen):
+	#camera = Camera(play=True, index=1, resolution=(399, 299))
+	def FindFace(self):
+		print()
 
 class PipBoyApp(App):
 
 	def build(self):
+		#Create the screen manager
 		sm = ScreenManager()
 		sm.add_widget(MenuScreen(name='menu'))
 		sm.add_widget(SettingsScreen(name='settings'))
+		sm.add_widget(CameraMode(name='camera'))
 		return sm
 
 
