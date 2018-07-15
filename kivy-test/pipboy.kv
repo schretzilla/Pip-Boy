@@ -57,6 +57,11 @@ ScreenManagement:
             resolution: 399, 299
             play: True
 
+
+        AsyncImage:
+            id: displayImage
+            source: ''
+
         BoxLayout:
             orientation: 'horizontal'
             size_hint_y: None
@@ -64,12 +69,13 @@ ScreenManagement:
             Button:
                 text: 'V.A.T.S.'
                 on_release:
+                    root.DeleteCamera()
                     root.FindFace()
 
             Button:
                 text: 'Back'
                 on_release: 
-                    root.DeleteCamera
+                    root.DeleteCamera()
                     root.manager.transition.direction = 'down'
                     root.manager.current = 'menu'
 

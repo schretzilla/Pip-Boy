@@ -22,7 +22,7 @@ Builder.load_string('''
         id: displayGrid
 
         Image:
-            id: displayImage
+            id: displayImageOld
             source: 'faceImg/grayImg.png'
         GridLayout:
             rows: 1
@@ -63,6 +63,7 @@ class SettingsScreen(Screen):
 class CameraMode(Screen):
 	#camera = Camera(play=True, index=1, resolution=(399, 299))
 	def FindFace(self):
+		self.ids.displayImage.source = ''
 		camera = self.ids['camera'] #get camera obj from .kv file
 
 		#freeze the image
@@ -85,7 +86,9 @@ class CameraMode(Screen):
 		cv2.imwrite("faceImg/grayImg.png", img)
 		
 		#img.save("./grayImg.png")
-		sm.current = 'display'
+		#sm.current = 'display'
+		self.ids.displayImage.source = 'faceImg/grayImg.png'
+		self.ids.displayImage.reload()
 
 	def DeleteCamera(self):
 		self.remove_widget(self.ids.camera)
