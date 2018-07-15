@@ -1,0 +1,55 @@
+#:kivy 1.0.9
+
+ScreenManagement:
+    MenuScreen:
+    AnotherScreen:
+
+<SplashScreen>:    
+    canvas:
+        Rectangle:
+            pos: self.pos
+            size: self.size
+            source: 'splash-screen.jpg'
+
+    Label:
+        text: "Loading..."
+        center_x: root.width/2
+        color: 0,1,0,0
+
+<MenuScreen>:
+    canvas:
+        Rectangle:
+            pos: self.pos
+            size: self.size
+            source: 'main-menu.jpg'
+
+    GridLayout:
+        cols: 2
+        rows: 1
+        GridLayout:
+            cols: 1
+            rows: 7
+            width: 10
+            Label: 
+            Label: 
+            Label: 
+            Label: 
+            Label:
+            Button:
+                on_release: 
+                    root.manager.transition.direction = 'left'
+                    root.manager.current = 'settings'
+                text: 'Go to settings'
+            Label: 
+            
+
+        Label:
+<SettingsScreen>:
+    BoxLayout:
+        Button:
+            text: 'My Settings button'
+        Button:
+            text: 'Back to menu'
+            on_press: 
+                root.manager.transition.direction = 'right'
+                root.manager.current = 'menu'
